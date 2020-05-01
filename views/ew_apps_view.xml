@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<data>
+    <record id="ew_apps_menu_action" model="ir.actions.act_window">
+        	<field name="name">EW Apps</field>
+        	<field name="res_model">ew.app</field>
+        	<field name="view_mode">tree,form</field>
+        	<field name="domain">[]</field>
+        	<field name="help" type="html">
+            	<p class="oe_view_nocontent_create">Create the first Odoo App
+            	</p>
+        	</field>
+    </record>
+    	<menuitem id="ew_app_menu"
+              	name="EW Odoo Apps"/>
+    	 <menuitem id="ew_apps_menu"
+              	parent="ew_app_menu"
+              	name="Apps"
+              	action="ew_apps_menu_action"/>
+	</data>
+</odoo>
