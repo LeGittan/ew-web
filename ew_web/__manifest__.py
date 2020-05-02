@@ -29,7 +29,9 @@
         'security/ir.model.access.csv',
         'views/views.xml',
         'views/templates.xml',
-        'views/ew_apps_view.xml'
+        'views/ew_apps_view.xml',
+        'views/assets.xml',
+        'views/snippets.xml'
     ],
     # only loaded in demonstration mode
     'demo': [
