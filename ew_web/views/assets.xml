@@ -1,0 +1,11 @@
+<odoo>
+<data>
+<template id="mystyle" name="ERPWare styles" inherit_id="website.assets_frontend">
+    <xpath expr="link[last()]" position="before">
+        <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    </xpath>
+</template>
+
+</data>
+</odoo>

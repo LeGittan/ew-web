@@ -1,0 +1,150 @@
+<odoo>
+<data>
+<template id="snippet_features" name="Feature 1 snippet">
+<section class="snippet_pricing">
+
+<style>
+.services {
+  margin-bottom: 1rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-row-gap: .5rem;
+  list-style: none;
+}
+
+.services__item {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+  border-radius: .25rem;
+  box-shadow: 0 3px 3px 0 darken(#37718E, 10%);
+  background-color: #e9ecef;
+  cursor: pointer;
+}
+
+
+.active {
+    color: #ffffff;
+    background-color: #0A7171;
+}
+
+.total {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+  }</style>
+<div id="calc" v-cloak>
+    <div class="container">
+
+    <h1 class="text-center" style="margin-bottom: 30px;">Odoo liiketoimintasovellukset</h1>
+    <div class="row">
+  <div class="col-md-8">
+  <div class="row">
+  <div class="col-md-6" v-for="service in services">  
+  <ul class="services">
+    <li class="services__item" v-on:click="toggleActive(service);" v-bind:class="{ 'active' : service.active }">
+      <span><img :src="'data:image/jpeg;base64,'+ service.icon" width="48"></span> 
+      <span>{{service.name}}</span> <span>{{service.price_per_month | currency}}</span>
+    </li>
+  </ul>
+  </div>
+
+  </div>
+  <!-- /.col-md-12 -->
+</div>
+<div class="col-md-4">
+  <div class="card card-pricing bg-default border-0 text-center mb-4">
+    <div class="card-header bg-transparent">
+      <h6 class="text-uppercase ls-1 text-white py-3 mb-0">Odoo Enterprise</h6>
+    </div>
+    <div class="card-body">
+      <div class="display-2 text-white">{{total() | currency}}</div>
+      <span class=" text-white">per kuukausi</span>
+      <ul class="list-unstyled my-4">
+        <li v-for="app in services" v-if="app.active">
+          <div class="d-flex align-items-center">
+            <div>
+              <div class="icon icon-xs icon-shape bg-white shadow rounded-circle text-default">
+                <i class="ni ni-book-bookmark"></i>
+              </div>
+            </div>
+            <div>
+              <span class="pl-2 text-sm text-white">{{app.name}}</span>
+            </div>
+          </div>
+        </li>
+      </ul>
+      <a  href="#contactus" class="btn btn-link text-white mb-3">Ota yhteyttä/a>
+    </div>
+  </div>
+</div>
+
+    </div>
+    </div>
+
+
+</div><!-- VUE APP -->
+
+<script>
+Vue.filter('currency', function(value) {
+  return  value.toFixed(2) + ' EUR';
+});
+
+  var app = new Vue ({
+  el: "#calc",
+  data () {
+    return {
+      services: null
+    }
+  },
+  mounted () {
+    axios
+      .get('https://legittan-ew-web-master-1072939.dev.odoo.com/api/apps')
+      .then(response => (this.services = response.data))
+      console.log(this.services)
+  },
+  methods: {
+    toggleActive: function(s) {
+      s.active = !s.active;
+    },
+    total: function() {
+      var total = 0;      
+      this.services.forEach(function(s) {
+        if (s.active) {
+          total += s.price_per_month;
+        }
+      });
+      return total;
+    },
+    countApps: function() {
+      var countApps = 0;      
+      this.services.forEach(function(s) {
+        if (s.active) {
+          countApps = countApps +1;
+          
+        }
+      });
+      return countApps;
+    }
+  }
+});
+</script>
+</section>
+</template>
+
+
+
+
+
+
+
+
+<template id="place_into_bar" inherit_id="website.snippets" name="Place into bar">
+<xpath expr="//div[@id='snippet_structure']/div[@class='o_panel_body']" position="inside">
+    <t t-snippet="ew_web.snippet_pricing"
+    t-thumbnail="/ew_web/static/images/pricing.png"/>
+</xpath>
+</template>
+
+  </data>
+</odoo>
