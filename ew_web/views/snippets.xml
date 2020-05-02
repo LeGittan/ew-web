@@ -24,9 +24,9 @@
 
 
 <template id="place_into_bar" inherit_id="website.snippets" name="Place into bar">
-<xpath expr="//div[@id='snippet_structure']/div[@class='o_panel_body']" position="inside">
+<xpath expr="//div[@id='snippet_structure']/div[hasclass='o_panel_body']" position="inside">
     <t t-snippet="ew_web.snippet_pricing"
-    t-thumbnail="/ew_web/static/images/pricing.png"/>
+    t-thumbnail="/ew_web/static/images/pricing.jpeg"/>
 </xpath>
 </template>
 
