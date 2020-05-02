@@ -3,6 +3,7 @@ from odoo import models, fields, api
 
 class EWApp(models.Model):
     _name = 'ew.app'
+    _description = 'A App model for EW internal and external sales & marketing'
 
     name = fields.Char(string='Name', required=True)
     description = fields.Char(string='Description')
