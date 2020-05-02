@@ -14,8 +14,9 @@ class EwOdooApps(http.Controller):
             name.append(a.name)
             description.append(a.description)
             price_per_month.append(a.price_per_month)
-            icon_64 = str(a.icon)
-            icon_data.append(icon_64.decode('utf-8'))
+            icon_64 = a.icon
+            icon_64 = icon_64.decode("utf-8")
+            icon_data.append(icon_64)
         pre_output = [{"name": n, "description": d, "price_per_month": p, "icon": i, "active": False} for n, d, p,
         i in zip(name, description, price_per_month, icon_data)]
         output = json.dumps(pre_output)
