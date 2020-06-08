@@ -1,0 +1,35 @@
+<odoo>
+<data>
+<template id="snippet_pricing" name="EW Pricing snippet">
+<section class="snippet_pricing">
+
+<iframe src="https://pricing.erpware.fi/" frameborder="0" 
+    style="
+    display: block;       /* iframes are inline by default */
+    background: #000;
+    border: none;         /* Reset default border */
+    height: 100vh;        /* Viewport-relative units */
+    width: 100vw;"
+    scroll="no">
+    </iframe>
+
+
+</section>
+</template>
+
+
+
+
+
+
+
+
+<template id="place_into_bar" inherit_id="website.snippets" name="Place into bar">
+<xpath expr="//div[@id='snippet_structure']/div[@class='o_panel_body']" position="inside">
+    <t t-snippet="ew_web.snippet_pricing"
+    t-thumbnail="/ew_web/static/images/pricing.jpeg"/>
+</xpath>
+</template>
+
+  </data>
+</odoo>
