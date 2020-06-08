@@ -1,6 +1,6 @@
 <odoo>
 <data>
-<template id="snippet_pricing" name="Feature 1 snippet">
+<template id="snippet_pricing" name="EW Pricing snippet">
 <section class="snippet_pricing">
 
 <iframe src="https://pricing.erpware.fi/" frameborder="0" 
@@ -9,7 +9,8 @@
     background: #000;
     border: none;         /* Reset default border */
     height: 100vh;        /* Viewport-relative units */
-    width: 100vw;">
+    width: 100vw;"
+    scroll="no">
     </iframe>
 
 
